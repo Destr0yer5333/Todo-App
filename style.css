@@ -1,0 +1,550 @@
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fafafa;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.side-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.side-btn:hover {
+    background: #efefef;
+}
+
+.logout {
+    background: #ff3b3b;
+    color: white;
+}
+
+.logout:hover {
+    background: #e22a2a;
+}
+
+.side-btn.active {
+    background: #222;
+    color: white;
+}
+
+/* Content */
+.content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-card h2 {
+    font-size: 35px;
+    margin-bottom: 7px;
+}
+
+.stat-card.completed {
+    background: #d3ffd6;
+}
+
+.stat-card.today {
+    background: #fff7d6;
+}
+
+/* View Tasks Button */
+.view-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #007aff;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    background: #005fcc;
+}
+
+/* Section Title */
+.section-title {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Tasks Due Today Section */
+.task-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.task-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-desc {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #444;
+}
+
+.tag.overdue {
+    background: red;
+    color: #fff;
+    padding: 4px 7px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.task-actions {
+    margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 7px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.edit-btn {
+    background: #ffc400;
+    color: black;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+}
+
+/* No task message */
+.no-tasks {
+    font-size: 18px;
+    color: #444;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .task-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+/* Display Page */
+
+.display-container {
+    padding: 30px;
+    margin-left: 260px;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-menu h1 {
+    font-size: 28px;
+}
+
+.buttons-wrap a {
+    padding: 10px 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.green-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.green-btn:hover {
+    background: #23a65b;
+}
+
+.blue-btn {
+    background: #3498db;
+    color: white;
+}
+
+.blue-btn:hover {
+    background: #217bb8;
+}
+
+/* FILTER BAR */
+
+.filter-bar {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 8px 14px;
+    background: #eee;
+    border-radius: 6px;
+    margin-right: 10px;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+}
+
+.filter-btn.active {
+    background: #222;
+    color: white;
+}
+
+.priority-form select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-weight: 600;
+}
+
+/* TABLE */
+
+.table-container {
+    margin-top: 25px;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    background:white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.task-table th {
+    background:#f2f2f2;
+    padding: 12px;
+    text-align:left;
+}
+
+.task-table td {
+    padding: 12px;
+    border-bottom:1px solid #eee;
+}
+
+/* Status buttons */
+
+.status-btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+.completed {
+    background: #2ecc71;
+    color:white;
+}
+
+.pending {
+    background: #f1c40f;
+    color:black;
+}
+
+/* Edit & delete */
+.edit-btn, .delete-btn {
+    padding:6px 14px;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background:#ffc400;
+    color:black;
+}
+
+.delete-btn {
+    background:red;
+    color:white;
+}
+
+/* Priority */
+.priority-badge {
+    padding:7px 12px;
+    border-radius:6px;
+    font-size:12px;
+    color:white;
+    font-weight:bold;
+}
+
+.priority-badge.high { background:red; }
+.priority-badge.medium { background:orange; }
+.priority-badge.low { background:green; }
+
+.empty-msg {
+    padding:20px;
+    font-size:18px;
+    color:#444;
+}
+/* AddTask Form Styling */
+
+.add-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f8fa;
+}
+
+.add-box {
+    background: #fff;
+    width: 420px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.add-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.add-box form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.add-box form input,
+.add-box form textarea,
+.add-box form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 6px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.add-box form input:focus,
+.add-box form textarea:focus,
+.add-box form select:focus {
+    border-color: #007aff;
+    background: #fff;
+}
+
+.add-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 12px;
+    background: #22c55e;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #17a349;
+}
+
+.back-btn {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+/* Small fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+/* Container that centers content */
+.modern-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f9fa;   /* light background */
+}
+
+/* Card box same as add task */
+.modern-card {
+    width: 420px;  /* perfect compact form width */
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eaeaea;
+}
+
+/* Heading */
+.modern-card h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 26px;
+    color: #333;
+}
+
+/* Labels above inputs */
+.modern-card label {
+    font-size: 15px;
+    display: block;
+    margin: 8px 0 4px;
+    color: #444;
+}
+
+/* Inputs & textarea */
+.modern-card input[type="text"],
+.modern-card input[type="email"],
+.modern-card input[type="password"],
+.modern-card textarea,
+.modern-card select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-bottom: 14px;
+    font-size: 15px;
+}
+
+.modern-card input:focus,
+.modern-card select:focus,
+.modern-card textarea:focus {
+    border-color: #4C6FFF;
+}
+
+/* Submit button */
+.modern-card input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4C6FFF;
+    color: white;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.modern-card input[type="submit"]:hover {
+    background: #3754d9;
+}
+
+/* Secondary button (Create Account / Already Have ID etc.) */
+.bbut {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #4C6FFF;
+    color: #4C6FFF;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bbut:hover {
+    background: #4C6FFF;
+    color: white;
+}
