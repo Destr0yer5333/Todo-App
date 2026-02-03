@@ -12,7 +12,7 @@
 <?php
 @include "conn.php";
 
-$id11 = $_GET['idd'];
+$id11 = $_GET['id'];
 
 $sql = "SELECT * FROM task WHERE id='$id11'";
 
@@ -42,8 +42,10 @@ $row = $result->fetch_assoc();
             <option value="medium">Medium</option>
             <option value="low">Low</option></select><br> 
     Enter DueDate:<input type="date" name="duedate" value="<?php echo $row['duedate'];?>">
-    <input type="submit" value="Add Task">
+    <input type="submit" value="Update Task">
+    
 </form>
+<a href="dashboard.php" class="back-btn">← Go Back</a>
 </div>
 </div>
 </body>
